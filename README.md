@@ -6,8 +6,32 @@ Leverages [go-png-chunks](https://github.com/chrisbward/go-png-chunks) to read t
 Example usage;
 
 ```go
+package main
 
+import (
+	gopngchunkschara "github.com/chrisbward/go-png-chunks-chara"
+)
 
+func CreateCharacterCard(characterCard gopngchunkschara.CharacterCardV1V2, inputFilePath string, outputFilePath string) error {
+
+    err := characterCard.WriteToPng(inputFilePath, outputFilePath)
+	if err != nil {
+		return err
+	}
+	return nil
+
+}
+
+func main() {
+
+    characterCard := gopngchunkschara.CharacterCardV1V2{
+        Name:        "Chris Ward",
+        Description: "",
+        ... etc
+    }
+
+    CreateCharacterCard(characterCard, "test.png", "out.png")
+}
 
 ```
  
